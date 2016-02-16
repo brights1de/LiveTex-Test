@@ -18,3 +18,7 @@ php artisan db:seed --class=GenerationsTableSeeder
 php artisan db:seed --class=FamiliesTableSeeder
 php artisan db:seed --class=PeoplesTableSeeder
 ```
+
+
+
+Good luck!
