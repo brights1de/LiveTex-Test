@@ -21,4 +21,4 @@ php artisan db:seed --class=PeoplesTableSeeder
 
 
 
-Good luck!!
+Good luck!
