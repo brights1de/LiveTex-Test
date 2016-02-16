@@ -21,6 +21,11 @@ class PeopleController extends Controller
         $this->generationManager = $generationManager;
     }
 
+    /**
+     * Show all peoples
+     *
+     * @return array
+     */
     public function showAllPeoples()
     {
         $peoples = $this->peopleManager->getAllPeoples();
@@ -28,6 +33,11 @@ class PeopleController extends Controller
         return view('people/list', ['peoples' => $peoples]);
     }
 
+    /**
+     * Show form for add new people
+     *
+     * @return array
+     */
     public function showPeopleForm()
     {
 
@@ -38,6 +48,8 @@ class PeopleController extends Controller
     }
 
     /**
+     * Add new people
+     *
      * @param  Request $request
      * @return array
      */
