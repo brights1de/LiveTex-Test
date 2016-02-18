@@ -20,7 +20,6 @@
                 <td>{{$peoples[$i]['surname']}}</td>
                 <td>{{$peoples[$i]['age']}}</td>
                 <td>{{$peoples[$i]['gender']}}</td>
-                <td><a href="{{URL::action('FamilyController@showFamily', $peoples[$i]['family_id'])}}">family tree</a></td>
             </tr>
         @endfor
         </tbody>

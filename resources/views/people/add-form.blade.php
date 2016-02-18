@@ -23,20 +23,20 @@
                 </td>
             </tr>
             <tr>
-                <td><label for="age">Family</label></td>
-                <td><select name="family_id">
+                <td><label for="father">Father</label></td>
+                <td><select name="parent_id">
                     <option value=""></option>
-                    @for ($i = 0; $i < count($families); $i++)
-                        <option value="{{$families[$i]['id']}}">{{$families[$i]['name']}}</option>
+                        @for ($i = 0; $i < count($peoples); $i++)
+                            <option value="{{$peoples[$i]['id']}}">{{$peoples[$i]['name']}}</option>
                     @endfor
                 </select></td>
             </tr>
             <tr>
-                <td><label for="age">Generation(поколение)</label></td>
-                <td><select name="generation_id">
+                <td><label for="spouse">Spouse</label></td>
+                <td><select name="spouse">
                         <option value=""></option>
-                        @for ($j = 0; $j < count($generations); $j++)
-                            <option value="{{$generations[$j]['id']}}">{{$generations[$j]['name']}}</option>
+                        @for ($i = 0; $i < count($peoples); $i++)
+                            <option value="{{$peoples[$i]['id']}}">{{$peoples[$i]['name']}}</option>
                         @endfor
                     </select></td>
             </tr>

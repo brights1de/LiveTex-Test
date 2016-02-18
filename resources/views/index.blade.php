@@ -10,6 +10,9 @@
         <li>
             <a href="{{ URL::route('allPeoples') }}"> All peoples</a>
         </li>
+        <li>
+            <a href="{{ URL::route('showTrees') }}"> All trees</a>
+        </li>
     </ul>
 </div>
 @stop

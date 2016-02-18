@@ -31,9 +31,9 @@ Route::post('people/processing',
         'uses' => 'PeopleController@processingRequest',
     ]);
 
-Route::get('family/{id}',
+Route::get('tree',
     [
-        'as'   => 'showFamily',
-        'uses' => 'FamilyController@showFamily',
+        'as'   => 'showTrees',
+        'uses' => 'PeopleController@showTrees',
     ]);
 

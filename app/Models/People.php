@@ -1,17 +1,15 @@
 <?php namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
-class People extends Model
+class People extends \Kalnoy\Nestedset\Node
 {
 
     protected $table = 'peoples';
-    protected $fillable = ['name', 'surname', 'age', 'gender', 'family_id', 'generation_id'];
+    protected $fillable = ['name', 'surname', 'age', 'gender', 'spouse'];
     public $timestamps = false;
 
-    public function family()
+    public function spouse()
     {
-        return $this->belongsTo('App\Models\Family', 'id');
+        return $this->belongsTo('App\Models\People', 'spouse', 'id');
     }
 
 }
