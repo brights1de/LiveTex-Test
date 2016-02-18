@@ -23,4 +23,10 @@ class PeopleManager
         $this->peopleRepository->createPeople($data);
     }
 
+    public function getAllTreePeoples()
+    {
+        $result = $this->peopleRepository->findAllTreePeoples();
+
+        return $result;
+    }
 }

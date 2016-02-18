@@ -1,24 +1,15 @@
 <?php namespace App\Http\Controllers;
 
 use App\Libs\People\PeopleManager;
-use App\Libs\Family\FamilyManager;
-use App\Libs\Generation\GenerationManager;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Redirector;
 
 class PeopleController extends Controller
 {
     private $peopleManager;
-    private $familyManager;
-    private $generationManager;
 
-    public function __construct(PeopleManager $peopleManager,
-        FamilyManager $familyManager,
-        GenerationManager $generationManager)
+    public function __construct(PeopleManager $peopleManager)
     {
         $this->peopleManager = $peopleManager;
-        $this->familyManager = $familyManager;
-        $this->generationManager = $generationManager;
     }
 
     /**
@@ -41,10 +32,9 @@ class PeopleController extends Controller
     public function showPeopleForm()
     {
 
-        $families = $this->familyManager->getAllFamilies();
-        $generations = $this->generationManager->getAllGenerations();
+        $peoples = $this->peopleManager->getAllPeoples();
 
-        return view('people/add-form', ['families' => $families, 'generations' => $generations]);
+        return view('people/add-form', ['peoples' => $peoples]);
     }
 
     /**
@@ -58,17 +48,29 @@ class PeopleController extends Controller
         //@todo add request form when will be complex logic
         $this->validate($request,
             [
-                'name'          => 'required|string',
-                'surname'       => 'required|string',
-                'age'           => 'required|integer',
-                'gender'        => 'required|in:male,female',
-                'family_id'     => 'required|exists:families,id',
-                'generation_id' => 'required|exists:generations,id',
+                'name'      => 'required|string',
+                'surname'   => 'required|string',
+                'age'       => 'required|integer',
+                'gender'    => 'required|in:male,female',
+                'spouse'    => 'exists:peoples,id',
+                'parent_id' => 'exists:peoples,id',
             ]);
 
         $this->peopleManager->addPeople($request->all());
 
         return \Redirect::action('PeopleController@showPeopleForm')->with('messageSuccess',
             'The people successfully added');
+    }
+
+    /**
+     * Show trees peoples all family
+     *
+     * @return array
+     */
+    public function showTrees()
+    {
+        $trees = $this->peopleManager->getAllTreePeoples();
+
+        return view('people/tree', ['trees' => $trees]);
     }
 }
