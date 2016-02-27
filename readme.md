@@ -16,3 +16,5 @@ bash bin/deploy
 ```sh
 php artisan db:seed --class=PeoplesTableSeeder
 ```
+
+Good luck!
